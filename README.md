@@ -1011,5 +1011,3 @@ ENV=dev pytest tests/ -v -s --log-cli-level=DEBUG
 Dúvidas ou sugestões de melhoria? Abra uma issue ou fale com o time responsável pelo framework.
 
 ---
-
-_Jornada Test Framework — Itaú Unibanco, Jornada do Futuro_
