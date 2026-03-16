@@ -1,0 +1,72 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "ManifestResponse",
+  "description": "Schema do response do endpoint GET /manifest",
+  "type": "object",
+  "required": ["version", "generated_at", "environment", "mfes", "routes"],
+  "additionalProperties": true,
+  "properties": {
+    "version": {
+      "type": "string",
+      "description": "Versão do manifest",
+      "minLength": 1
+    },
+    "generated_at": {
+      "type": "string",
+      "description": "Timestamp de geração do manifest (ISO 8601)"
+    },
+    "environment": {
+      "type": "string",
+      "enum": ["dev", "staging", "prod"],
+      "description": "Ambiente de origem do manifest"
+    },
+    "mfes": {
+      "type": "array",
+      "description": "Lista de Micro Frontends registrados",
+      "items": {
+        "type": "object",
+        "required": ["id", "name", "bundle_url", "active"],
+        "properties": {
+          "id": { "type": "string" },
+          "name": { "type": "string", "minLength": 1 },
+          "version": { "type": "string" },
+          "bundle_url": { "type": "string", "format": "uri" },
+          "scope": { "type": "string" },
+          "module": { "type": "string" },
+          "active": { "type": "boolean" },
+          "roles": {
+            "type": "array",
+            "items": { "type": "string" }
+          }
+        }
+      }
+    },
+    "routes": {
+      "type": "array",
+      "description": "Lista de rotas da plataforma",
+      "items": {
+        "type": "object",
+        "required": ["id", "path", "mfe", "protected"],
+        "properties": {
+          "id": { "type": "string" },
+          "path": { "type": "string", "pattern": "^/" },
+          "page_title": { "type": "string" },
+          "mfe": { "type": "string" },
+          "protected": { "type": "boolean" },
+          "roles": {
+            "type": "array",
+            "items": { "type": "string" }
+          }
+        }
+      }
+    },
+    "metadata": {
+      "type": "object",
+      "properties": {
+        "total_mfes": { "type": "integer" },
+        "total_routes": { "type": "integer" },
+        "platform": { "type": "string" }
+      }
+    }
+  }
+}

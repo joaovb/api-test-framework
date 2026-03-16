@@ -1,0 +1,37 @@
+# ==============================================================
+# Configuração BASE — compartilhada por todos os ambientes
+# Valores aqui podem ser sobrescritos nos arquivos de ambiente
+# ==============================================================
+
+api:
+  version: "v1"
+  timeout: 30
+  retry:
+    enabled: true
+    max_attempts: 3
+    backoff_factor: 0.5   # segundos entre tentativas
+
+auth:
+  token_refresh_margin: 60  # renova o token N segundos antes de expirar
+  grant_type: "client_credentials"
+
+headers:
+  default:
+    Content-Type: "application/json"
+    Accept: "application/json"
+    X-Application-Name: "jornada-test-framework"
+  security_required:
+    - "X-Content-Type-Options"
+    - "X-Frame-Options"
+    - "Strict-Transport-Security"
+
+endpoints:
+  manifest: "/manifest"
+  pages: "/pages"
+  journeys: "/journeys"
+  permissions: "/permissions"
+  health: "/actuator/health"
+
+logging:
+  level: "INFO"
+  format: "json"

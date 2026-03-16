@@ -1,0 +1,15 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "ErrorResponse",
+  "description": "Schema padrão de resposta de erro da API",
+  "type": "object",
+  "required": ["error", "message", "status"],
+  "properties": {
+    "status": { "type": "integer" },
+    "error": { "type": "string", "minLength": 1 },
+    "message": { "type": "string", "minLength": 1 },
+    "timestamp": { "type": "string" },
+    "path": { "type": "string" },
+    "trace_id": { "type": "string" }
+  }
+}

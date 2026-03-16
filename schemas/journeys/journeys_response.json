@@ -1,0 +1,41 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "JourneysResponse",
+  "description": "Schema do response do endpoint GET /journeys",
+  "type": "object",
+  "required": ["journeys", "total"],
+  "properties": {
+    "journeys": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "name", "active", "steps"],
+        "properties": {
+          "id": { "type": "string" },
+          "name": { "type": "string", "minLength": 1 },
+          "display_name": { "type": "string" },
+          "description": { "type": "string" },
+          "active": { "type": "boolean" },
+          "roles": { "type": "array", "items": { "type": "string" } },
+          "steps": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": ["order", "id", "mfe", "route"],
+              "properties": {
+                "order": { "type": "integer", "minimum": 1 },
+                "id": { "type": "string" },
+                "mfe": { "type": "string" },
+                "route": { "type": "string" },
+                "label": { "type": "string" },
+                "required": { "type": "boolean" }
+              }
+            }
+          },
+          "total_steps": { "type": "integer", "minimum": 1 }
+        }
+      }
+    },
+    "total": { "type": "integer", "minimum": 0 }
+  }
+}

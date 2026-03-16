@@ -1,0 +1,58 @@
+[build-system]
+requires = ["setuptools>=68.0", "wheel"]
+build-backend = "setuptools.backends.legacy:build"
+
+[project]
+name = "jornada-test-framework"
+version = "1.0.0"
+description = "Framework de testes automatizados para APIs da Jornada do Futuro — domínio de MFEs, rotas e permissões"
+requires-python = ">=3.11"
+
+dependencies = [
+    "httpx>=0.27.0",
+    "pytest>=8.2.0",
+    "pytest-html>=4.1.0",
+    "pytest-xdist>=3.5.0",
+    "allure-pytest>=2.13.0",
+    "pydantic>=2.7.0",
+    "jsonschema>=4.22.0",
+    "pyyaml>=6.0.1",
+    "faker>=25.0.0",
+    "python-dotenv>=1.0.1",
+    "respx>=0.21.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "black>=24.0.0",
+    "ruff>=0.4.0",
+    "mypy>=1.10.0",
+]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+python_classes = ["Test*"]
+python_functions = ["test_*"]
+addopts = [
+    "-v",
+    "--tb=short",
+    "--strict-markers",
+]
+markers = [
+    "contrato: testes funcionais de contrato de API",
+    "seguranca: testes de segurança (auth, authz, headers)",
+    "manifest: testes do endpoint de manifest",
+    "pages: testes de endpoints de páginas e rotas",
+    "journeys: testes de endpoints de jornadas",
+    "smoke: subset rápido para validação pós-deploy",
+    "regressao: suíte completa de regressão",
+]
+
+[tool.black]
+line-length = 100
+target-version = ["py311"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"

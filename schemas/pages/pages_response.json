@@ -1,0 +1,29 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "PagesResponse",
+  "description": "Schema do response do endpoint GET /pages",
+  "type": "object",
+  "required": ["pages", "total"],
+  "properties": {
+    "pages": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "path", "mfe", "protected"],
+        "properties": {
+          "id": { "type": "string" },
+          "path": { "type": "string", "pattern": "^/" },
+          "page_title": { "type": "string" },
+          "mfe": { "type": "string" },
+          "protected": { "type": "boolean" },
+          "roles": { "type": "array", "items": { "type": "string" } },
+          "breadcrumb": { "type": "array" },
+          "metadata": { "type": "object" }
+        }
+      }
+    },
+    "total": { "type": "integer", "minimum": 0 },
+    "page": { "type": "integer", "minimum": 1 },
+    "page_size": { "type": "integer", "minimum": 1 }
+  }
+}

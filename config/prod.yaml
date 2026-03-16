@@ -1,0 +1,16 @@
+# ==============================================================
+# Configuração PROD — uso restrito, apenas smoke tests
+# ==============================================================
+
+api:
+  base_url: "https://api.jornada-futuro.itau.com.br"
+  timeout: 15
+
+auth:
+  token_url: "https://auth.itau.com.br/oauth/token"
+  client_id: "${OAUTH_CLIENT_ID}"
+  client_secret: "${OAUTH_CLIENT_SECRET}"
+  scope: "jornada:read"
+
+logging:
+  level: "WARNING"

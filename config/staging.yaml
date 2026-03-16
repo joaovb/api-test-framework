@@ -1,0 +1,16 @@
+# ==============================================================
+# Configuração STAGING — ambiente de homologação / pipeline CI
+# ==============================================================
+
+api:
+  base_url: "https://api-staging.jornada-futuro.itau.com.br"
+  timeout: 30
+
+auth:
+  token_url: "https://auth-staging.itau.com.br/oauth/token"
+  client_id: "${OAUTH_CLIENT_ID}"
+  client_secret: "${OAUTH_CLIENT_SECRET}"
+  scope: "jornada:read jornada:write"
+
+logging:
+  level: "INFO"

@@ -1,0 +1,16 @@
+# ==============================================================
+# Configuração DEV — ambiente local de desenvolvimento
+# ==============================================================
+
+api:
+  base_url: "http://localhost:8080"
+  timeout: 60   # timeout maior para debug local
+
+auth:
+  token_url: "http://localhost:9090/oauth/token"
+  client_id: "${OAUTH_CLIENT_ID}"
+  client_secret: "${OAUTH_CLIENT_SECRET}"
+  scope: "jornada:read jornada:write"
+
+logging:
+  level: "DEBUG"   # mais verboso em dev
