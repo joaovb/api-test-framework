@@ -127,7 +127,7 @@ Edite o arquivo `.env` com as credenciais do ambiente:
 ENV=dev
 OAUTH_CLIENT_ID=seu-client-id
 OAUTH_CLIENT_SECRET=seu-client-secret
-OAUTH_TOKEN_URL=https://auth.itau.com.br/oauth/token
+OAUTH_TOKEN_URL=https://auth.com.br/oauth/token
 OAUTH_SCOPE=jornada:read jornada:write
 ```
 
